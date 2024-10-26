@@ -6,11 +6,24 @@
 /*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 18:18:34 by antimit           #+#    #+#             */
-/*   Updated: 2024/10/26 18:47:31 by antimit          ###   ########.fr       */
+/*   Updated: 2024/10/26 23:04:57 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
+
+char	*ft_init_left_str(char *left_str)
+{
+	if (!left_str)
+	{
+		left_str = (char *)malloc(1 * sizeof(char));
+		if (!left_str)
+			return (NULL);
+		left_str[0] = '\0';
+	}
+	return (left_str);
+}
 
 char	*ft_append_string(char *left_str, char *buff)
 {
@@ -18,24 +31,19 @@ char	*ft_append_string(char *left_str, char *buff)
 	size_t	j;
 	char	*str;
 
-	if (!left_str)
-	{
-		left_str = (char *)malloc(1 * sizeof(char));
-		left_str[0] = '\0';
-	}
+	left_str = ft_init_left_str(left_str);
 	if (!left_str || !buff)
 		return (NULL);
-	str = malloc(sizeof(char) * ((str_len(left_str) + str_len(buff)) + 1));
-	if (str == NULL)
+	str = malloc(sizeof(char) * (str_len(left_str) + str_len(buff) + 1));
+	if (!str)
 		return (NULL);
 	i = -1;
+	while (left_str[++i] != '\0')
+		str[i] = left_str[i];
 	j = 0;
-	if (left_str)
-		while (left_str[++i] != '\0')
-			str[i] = left_str[i];
 	while (buff[j] != '\0')
 		str[i++] = buff[j++];
-	str[str_len(left_str) + str_len(buff)] = '\0';
+	str[i] = '\0';
 	free(left_str);
 	return (str);
 }
