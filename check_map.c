@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:22:53 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 14:22:03 by onosul           ###   ########.fr       */
+/*   Updated: 2024/10/27 20:22:17 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,63 +86,56 @@ void	check_rectengular_form(t_game *game)
 void	valid_path(t_game *game)
 {
 	char	**tab;
-	char **tab1;
 	int		i;
 	int		j;
-	int		k;
-	// int		a;
+	int		k;		
 
 	tab = ft_custom_double_strdup(game->map.full);
-	tab1 = ft_custom_double_strdup(game->map.full);
 	tab[game->map.player.y][game->map.player.x] = '0';
 	tab[game->map.exit_t.y][game->map.exit_t.x] = '0';
-	tab1[game->map.player.y][game->map.player.x] = '0';
-	tab1[game->map.exit_t.y][game->map.exit_t.x] = '0';
-	
-	fill(tab, (t_positon){game->map.columns, game->map.rows},
-		(t_positon){game->map.player.x, game->map.player.y}, '0');
-	if (tab[game->map.exit_t.y][game->map.exit_t.x] != 'F')
-	{
-		ft_free_tab(tab);
-		ft_free_tab(tab1);
-		ft_error_message(game, "Exit is inaccessible");
-	}
-	game->map.coins_pos = (t_positon *)malloc(game->map.coins);
+	game->map.coins_pos = (t_positon *)malloc(game->map.coins * sizeof(t_positon));
 	if(!game->map.coins_pos)
 	{
 		ft_free_tab(tab);
-		ft_free_tab(tab1);
 		ft_error_message(game, "Didn't allocate");	
 	}
 	k = 0;
 	i = 0;
-	while (tab1[i])
+	while (tab[i])
 	{
 		j = 0;
-		while (tab1[i][j])
+		while (tab[i][j])
 		{
-			if (tab1[i][j] == 'C')
+			if (tab[i][j] == 'C')
 			{
 				game->map.coins_pos[k] = (t_positon){j, i};
-				
+				tab[i][j] = '0';
 				k++;
 			}
 			j++;
 		}
 		i++;
 	}
-	// a = 0;
-	// while (a < game->map.coins)
-	// {
-	// 	if (tab[game->map.coins_pos[a].y][game->map.coins_pos[a].x] != 'F')
-	// 	{
-	// 		ft_free_tab(tab);
-	// 		ft_free_tab(tab1);
-	// 		free(game->map.coins_pos);
-	// 		ft_error_message(game, "Exit is inaccessible");
-	// 	}
-	// 	a++;
-	// }
+	fill(tab, (t_positon){game->map.columns, game->map.rows},
+		(t_positon){game->map.player.x, game->map.player.y}, '0');
+	if (tab[game->map.exit_t.y][game->map.exit_t.x] != 'F')
+	{
+		ft_free_tab(tab);
+		// ft_free_tab(tab1);
+		ft_error_message(game, "Exit is inaccessible");
+	}
+	
+	int a = 0;
+	while (a < game->map.coins)
+	{
+		if (tab[game->map.coins_pos[a].y][game->map.coins_pos[a].x] != 'F')
+		{
+			ft_free_tab(tab);
+			free(game->map.coins_pos);
+			ft_error_message(game, "coin is inaccessible");
+		}
+		a++;
+	}
 	free(game->map.coins_pos);
 	ft_free_tab(tab);
 }
