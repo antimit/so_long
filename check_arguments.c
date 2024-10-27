@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:22:48 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 11:22:49 by onosul           ###   ########.fr       */
+/*   Updated: 2024/10/27 21:37:49 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_error_message(t_game *game, char *message)
 {
-	if (game->map_alloc)
+	if (game->map_alloc == true)
 	{
 		ft_free_map(game);
 	}
 	free(game);
 	ft_printf("Error\n %s\n", message);
-	exit(1);
+	exit (EXIT_FAILURE);
 }
 
 void	check_arguments(int argc, char *argv[], t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_memory.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:23:01 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 11:23:03 by onosul           ###   ########.fr       */
+/*   Updated: 2024/10/27 21:36:04 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,11 @@ void	ft_free_all_allocated_memory(t_game *game)
 
 void	ft_free_map(t_game *game)
 {
-	char	*string;
-	int		i;
+	int	string;
 
-	i = 0;
-	while (game->map.full[i])
-	{
-		string = game->map.full[i];
-		free(string);
-		i++;
-	}
+	string = 0;
+	while (string < game->map.rows)
+		free(game->map.full[string++]);
 	free(game->map.full);
 }
 

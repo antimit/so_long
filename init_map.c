@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:23:34 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 11:23:35 by onosul           ###   ########.fr       */
+/*   Updated: 2024/10/27 21:13:05 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	init_map(t_game *game, char *argv)
 		free(line_temp);
 		game->map.rows++;
 	}
+	close(fd);
 	ft_check_for_empty_line(game, map_temp);
 	game->map.full = ft_split(map_temp, '\n');
 	game->map_alloc = true;
@@ -84,21 +85,24 @@ void	ft_check_for_empty_line(t_game *game, char *map)
 		ft_error_message(game, "The map is empty");
 	if (map[0] == '\n')
 	{
-		ft_error_message(game, "The newline was detected at the beginning");
 		free(map);
+		ft_error_message(game, "The newline was detected at the beginning");
+		
 	}
 	if (map[ft_strlen(map) - 1] == '\n')
 	{
-		ft_error_message(game, "The newline was detected at the end");
 		free(map);
+		ft_error_message(game, "The newline was detected at the end");
+		
 	}
 	i = 0;
 	while (map[i + 1])
 	{
 		if (map[i] == '\n' && map[i + 1] == '\n')
 		{
-			ft_error_message(game, "The newline was detected in the middle");
 			free(map);
+			ft_error_message(game, "The newline was detected in the middle");
+			
 		}
 		i++;
 	}
