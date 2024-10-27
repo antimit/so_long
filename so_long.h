@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
+/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:24:25 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 13:41:37 by onosul           ###   ########.fr       */
+/*   Updated: 2024/10/28 00:31:30 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void			check_arguments(int argc, char *argv[], t_game *game);
 void			check_rows(t_game *game);
 void			check_columns(t_game *game);
 void			check_rectengular_form(t_game *game);
-void			valid_path(t_game *game);
+
 void			check_map(t_game *game);
 
 // Check parameters
@@ -157,6 +157,11 @@ void			ft_print_movements(t_game *game);
 void			ft_render_sprite(t_game *game, t_image sprite, int line,
 					int column);
 
+//validate_map
+void			valid_path(t_game *game);
+void	validate_paths(t_game *game, char **tab);
+void	locate_coins(t_game *game, char **tab);
+void	initialize_map_and_coins(t_game *game, char ***tab);
 // So long
 
 #endif

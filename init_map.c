@@ -6,7 +6,7 @@
 /*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:23:34 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 23:01:14 by antimit          ###   ########.fr       */
+/*   Updated: 2024/10/28 00:35:05 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,11 @@ void	ft_check_for_empty_line(t_game *game, char *map)
 	{
 		free(map);
 		ft_error_message(game, "The newline was detected at the beginning");
-		
 	}
 	if (map[ft_strlen(map) - 1] == '\n')
 	{
 		free(map);
 		ft_error_message(game, "The newline was detected at the end");
-		
 	}
 	i = 0;
 	while (map[i + 1])
@@ -102,7 +100,6 @@ void	ft_check_for_empty_line(t_game *game, char *map)
 		{
 			free(map);
 			ft_error_message(game, "The newline was detected in the middle");
-			
 		}
 		i++;
 	}
@@ -115,6 +112,5 @@ void	init_vars(t_game *game)
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movements = 0;
-	// game->map_alloc = false;
 	game->player_sprite = RIGHT;
 }
