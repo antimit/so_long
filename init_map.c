@@ -6,7 +6,7 @@
 /*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:23:34 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 21:13:05 by antimit          ###   ########.fr       */
+/*   Updated: 2024/10/27 23:01:14 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	init_vars(t_game *game)
 	game->map.exit = 0;
 	game->map.players = 0;
 	game->movements = 0;
-	game->map_alloc = false;
+	// game->map_alloc = false;
 	game->player_sprite = RIGHT;
 }
