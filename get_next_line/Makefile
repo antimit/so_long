@@ -1,24 +1,39 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: onosul <onosul@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/27 11:21:46 by onosul            #+#    #+#              #
+#    Updated: 2024/10/27 11:21:50 by onosul           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME = gnl.a
-SRCS = get_next_line.c get_next_line_utils.c
 
-OBJS = $(SRCS:.c=.o)
 
-%.o:%.c
-	$(CC) $(CFLAGS) -c -o $@ $^
- 
+NAME = libgnl.a
+HEADER_FILE = get_next_line.h
+FILES = get_next_line.c\
+	get_next_line_utils.c
+
+CFLAGS = -Wextra -Wall -Werror -fPIC
+OFILES = $(FILES:.c=.o)
+
 all: $(NAME)
 
+$(NAME): $(OFILES)
+	ar -rcs $(NAME) $(OFILES)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+%.o: %.c $(HEADER_FILE)
+	cc $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	rm -f $(OFILES)
 
-fclean:
-	rm -rf $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-.PHONY: clean fclean
+re: fclean all
+
+.PHONY: all clean fclean re

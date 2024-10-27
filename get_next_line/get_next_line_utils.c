@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/27 11:21:24 by onosul            #+#    #+#             */
+/*   Updated: 2024/10/27 11:21:26 by onosul           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*append_string(char *left_str, char *buff)
@@ -27,7 +39,6 @@ char	*append_string(char *left_str, char *buff)
 	free(left_str);
 	return (str);
 }
-
 
 int	str_len(char *str)
 {
@@ -62,4 +73,3 @@ int	newline(char *str)
 	}
 	return (0);
 }
-

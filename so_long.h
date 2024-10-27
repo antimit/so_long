@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 18:18:55 by antimit           #+#    #+#             */
-/*   Updated: 2024/10/26 18:27:35 by antimit          ###   ########.fr       */
+/*   Created: 2024/10/27 11:24:25 by onosul            #+#    #+#             */
+/*   Updated: 2024/10/27 13:41:37 by onosul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_image
 
 typedef struct s_map
 {
+	t_positon	*coins_pos;
 	char		**full;
 	int			rows;
 	int			columns;
@@ -108,60 +109,54 @@ typedef struct s_game
 	t_image		player_back;
 }				t_game;
 
+// Check arguments
+void			ft_error_message(t_game *game, char *message);
+void			check_arguments(int argc, char *argv[], t_game *game);
 
-//Check arguments 
-void	ft_error_message(t_game *game, char *message);
-void	check_arguments(int argc, char *argv[], t_game *game);
+// Check map
+void			check_rows(t_game *game);
+void			check_columns(t_game *game);
+void			check_rectengular_form(t_game *game);
+void			valid_path(t_game *game);
+void			check_map(t_game *game);
 
+// Check parameters
+void			recognize_parameter(t_game *game, int i, int j);
+void			count_parameters(t_game *game);
+void			verify_parameters(t_game *game);
+void			fill(char **tab, t_positon size, t_positon cur, char to_fill);
 
+// Free memory
+void			destroy_images(t_game *game);
+void			ft_free_all_allocated_memory(t_game *game);
+void			ft_free_map(t_game *game);
+void			ft_free_tab(char **tab);
 
-//Check map
-void	check_rows(t_game *game);
-void	check_columns(t_game *game);
-void	check_rectengular_form(t_game *game);
-void	valid_path(t_game *game);
-void	check_map(t_game *game);
+// Handle input
+int				handle_input(int keycode, t_game *game);
+void			move_player(int new_x, int new_y, int player_sprite,
+					t_game *game);
+int				close_game(t_game *game);
 
+// init_game
+void			init_mlx(t_game *game);
+t_image			new_sprite(void *mlx, char *path, t_game *game);
+void			init_sprite(t_game *game);
 
-//Check parameters
-void	recognize_parameter(t_game *game, int i, int j);
-void	count_parameters(t_game *game);
-void	verify_parameters(t_game *game);
-void	fill(char **tab, t_positon size, t_positon cur, char to_fill);
+// init_map
+char			*ft_append_string(char *left_str, char *buff);
+void			init_map(t_game *game, char *argv);
+void			ft_check_for_empty_line(t_game *game, char *map);
+void			init_vars(t_game *game);
 
+// Render map
+int				ft_render_map(t_game *game);
+void			ft_identify_srpite(t_game *game, int x, int y);
+void			ft_render_player(t_game *game, int y, int x);
+void			ft_print_movements(t_game *game);
+void			ft_render_sprite(t_game *game, t_image sprite, int line,
+					int column);
 
-//Free memory 
-void	destroy_images(t_game *game);
-void	ft_free_all_allocated_memory(t_game *game);
-void	ft_free_map(t_game *game);
-void	ft_free_tab(char **tab);
-
-
-//Handle input
-int	handle_input(int keycode, t_game *game);
-void	move_player(int new_x, int new_y, int player_sprite, t_game *game);
-int	close_game(t_game *game);
-
-//init_game 
-void	init_mlx(t_game *game);
-t_image	new_sprite(void *mlx, char *path, t_game *game);
-void	init_sprite(t_game *game);
-
-
-//init_map
-char	*ft_append_string(char *left_str, char *buff);
-void	init_map(t_game *game, char *argv);
-void	ft_check_for_empty_line(t_game *game, char *map);
-void	init_vars(t_game *game);
-
-//Render map
-int	ft_render_map(t_game *game);
-void	ft_identify_srpite(t_game *game, int x, int y);
-void	ft_render_player(t_game *game, int y, int x);
-void	ft_print_movements(t_game *game);
-void	ft_render_sprite(t_game *game, t_image sprite, int line, int column);
-
-
-//So long
+// So long
 
 #endif
