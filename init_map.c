@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 11:23:34 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/28 00:35:05 by antimit          ###   ########.fr       */
+/*   Created: 2024/10/28 12:28:28 by onosul            #+#    #+#             */
+/*   Updated: 2024/10/28 12:28:41 by onosul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdlib.h>
 
 char	*ft_init_left_str(char *left_str)
 {

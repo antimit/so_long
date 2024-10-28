@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: onosul <onosul@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 11:24:25 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/28 10:49:09 by antimit          ###   ########.fr       */
+/*   Created: 2024/10/28 12:29:18 by onosul            #+#    #+#             */
+/*   Updated: 2024/10/28 12:29:20 by onosul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,14 +157,14 @@ void			ft_print_movements(t_game *game);
 void			ft_render_sprite(t_game *game, t_image sprite, int line,
 					int column);
 
-//validate_map
+// validate_map
 void			valid_path(t_game *game);
-void	validate_paths(t_game *game, char **tab);
-void	locate_coins(t_game *game, char **tab);
-void	initialize_map_and_coins(t_game *game, char ***tab);
-void	mark_unreachable_positions(t_game *game, char **tab);
-void	check_coin_accessibility(t_game *game, char **tab);
-void	validate_coin(t_game *game);
+void			validate_paths(t_game *game, char **tab);
+void			locate_coins(t_game *game, char **tab);
+void			initialize_map_and_coins(t_game *game, char ***tab);
+void			mark_unreachable_positions(t_game *game, char **tab);
+void			check_coin_accessibility(t_game *game, char **tab);
+void			validate_coin(t_game *game);
 // So long
 
 #endif
