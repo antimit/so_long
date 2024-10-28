@@ -6,7 +6,7 @@
 /*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:24:25 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/28 00:31:30 by antimit          ###   ########.fr       */
+/*   Updated: 2024/10/28 10:49:09 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,9 @@ void			valid_path(t_game *game);
 void	validate_paths(t_game *game, char **tab);
 void	locate_coins(t_game *game, char **tab);
 void	initialize_map_and_coins(t_game *game, char ***tab);
+void	mark_unreachable_positions(t_game *game, char **tab);
+void	check_coin_accessibility(t_game *game, char **tab);
+void	validate_coin(t_game *game);
 // So long
 
 #endif

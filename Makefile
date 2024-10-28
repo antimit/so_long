@@ -4,7 +4,7 @@
 NAME = so_long
 LFLAGS = -L./ft_printf -lftprintf -L./get_next_line -lgnl -L./libft -lft
 
-SRCS = so_long.c check_arguments.c init_map.c check_map.c init_game.c render_map.c handle_input.c free_memory.c check_parameter.c validate_path.c
+SRCS = so_long.c check_arguments.c init_map.c check_map.c init_game.c render_map.c handle_input.c free_memory.c check_parameter.c validate_path.c validate_coin.c
 
 
 OBJS = $(SRCS:.c=.o)
