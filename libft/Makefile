@@ -6,7 +6,7 @@
 #    By: antimit <antimit@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/26 18:02:02 by antimit           #+#    #+#              #
-#    Updated: 2024/10/26 18:02:04 by antimit          ###   ########.fr        #
+#    Updated: 2024/10/28 10:26:45 by antimit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS = ft_strnstr.c \
 		ft_strdup.c\
 		ft_strjoin.c\
 		ft_double_strdup.c\
-		ft_itoa.c
+		ft_itoa.c\
+		ft_isletter.c\
+		ft_strncmp.c
 OBJS = $(SRCS:.c=.o)
 
 %.o:%.c

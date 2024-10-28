@@ -6,7 +6,7 @@
 /*   By: antimit <antimit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:22:48 by onosul            #+#    #+#             */
-/*   Updated: 2024/10/27 22:56:08 by antimit          ###   ########.fr       */
+/*   Updated: 2024/10/28 10:32:28 by antimit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	ft_error_message(t_game *game, char *message)
 	}
 	free(game);
 	ft_printf("Error\n %s\n", message);
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 void	check_arguments(int argc, char *argv[], t_game *game)
 {
+	int	len;
+
 	game->map_alloc = false;
 	if (argc > 2)
 	{
@@ -33,9 +35,16 @@ void	check_arguments(int argc, char *argv[], t_game *game)
 	else if (argc < 2)
 	{
 		ft_error_message(game, "The map is missing");
+		return ;
 	}
-	if (!ft_strnstr((argv[1] + ft_strlen(argv[1]) - 4), ".ber", 4))
+	len = ft_strlen(argv[1]);
+	if (len < 5 || argv[1][0] == '.' || argv[1][len - 4] != '.'
+		|| ft_strncmp(argv[1] + len - 4, ".ber", 4) != 0)
 	{
-		ft_error_message(game, "Wrong file");
+		ft_error_message(game, "Wrong file or bad extension");
+	}
+	else if (argv[1][len - 5] == '/')
+	{
+		ft_error_message(game, "Wrong file or bad extension");
 	}
 }
